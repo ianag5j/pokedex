@@ -5,10 +5,10 @@ export default class NavBar extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg poke-nav">
-                    <a className="navbar-brand" href="#">Pokedex</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+                    <a className="navbar-brand">
+                        <img src="Pokédex_logo.png" height="30" alt="Pokedex">
+                        </img>
+                    </a>
                 </nav>
             </div>
         )
