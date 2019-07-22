@@ -9,7 +9,7 @@ export default class Tipo extends Component {
 
     render() {
         return (
-           <div className={'col tipo-' +  this.props.types.type.name}>
+           <div className={'col text-center tipo-' +  this.props.types.type.name}>
                {
                    this.props.types.type.name
                }

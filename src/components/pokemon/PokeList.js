@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import PokeCard from './PokeCard'
+import PokeInfo from './PokeInfo'
 
 import "../../tipos.css";
 
@@ -21,7 +22,8 @@ export default class PokeList extends Component {
     render() {
         return (
             <div className="row p-2">
-                { 
+                <PokeInfo />
+                {
                     this.state.pokemons.map(pokemon => (
                         <PokeCard nombre={pokemon.name} url={pokemon.url} />
                     ))

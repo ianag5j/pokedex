@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .poke-nav {
@@ -8,4 +8,14 @@
 
 .navbar-brand {
   color: azure
+}
+
+.posicion {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.poke-card {
+  position: relative;
 }
