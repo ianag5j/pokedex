@@ -1,46 +1,51 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
+import {
+    Card,
+    CardBody,
+    CardTitle,
+    CardImg,
+    Badge,
+} from 'shards-react'
 
 export default class PokeCard extends Component {
     state = {
         foto: 'default.png',
+        id: '???',
         tipos: []
     }
 
     async componentDidMount () {
-        const res = await Axios.get(this.props.url)
-        this.setState({
-            foto: res.data.sprites.front_default,
-            tipos: res.data.types,
-            id: res.data.id
-        })
+        try {
+            const res = await Axios.get(this.props.url)
+            this.setState({
+                foto: res.data.sprites.front_default,
+                tipos: res.data.types,
+                id: res.data.id
+            })
+        } catch (error) {
+           console.log(error);
+        }
+    }
+
+    mostrarModal() {
+        console.log('mostrate');
     }
 
     render() {
         return (
             <div className="col-3 mt-2 poke-card">
-                <div className="card" style={{background: this.colorFondo(this.state.tipos)}}>
-                    <img 
-                     src={this.state.foto} 
-                     className="card-img-top"
-                     alt={this.props.nombre}>
-                    </img>
-                    <span class="posicion badge badge-pill badge-secondary m-1">
+                <Card className="poke-card" style={{background: this.colorFondo(this.state.tipos)}}>
+                    <Badge pill theme='secondary' className='poke-pill m-2'>
                         {this.state.id}
-                    </span>
-                    <div className='card-body row'>
-                        <h5 className='card-title col text-center'>
-                            {this.props.nombre} 
-                        </h5>
-                    </div>
-                    {/* <div className='card-footer row'>    
-                        {
-                            this.state.tipos.map((tipo) => {
-                                return <Tipo types={tipo} />
-                            })
-                        }
-                    </div> */}
-                </div>
+                    </Badge>
+                    <CardImg top src={this.state.foto} />
+                    <CardBody>
+                        <CardTitle className='text-center'>
+                            {this.props.nombre}
+                        </CardTitle>
+                    </CardBody>
+                </Card>
             </div>
         )
     }

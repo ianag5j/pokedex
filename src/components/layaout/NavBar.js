@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
+import {
+    Navbar,
+    NavbarBrand
+ } from 'shards-react'
 
 export default class NavBar extends Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg poke-nav">
-                    <a className="navbar-brand">
+                <Navbar type="dark" theme="danger" expand='md'>
+                    <NavbarBrand href='/'>
                         <img src="Pokédex_logo.png" height="30" alt="Pokedex">
                         </img>
-                    </a>
-                </nav>
+                    </NavbarBrand>
+                </Navbar>
             </div>
         )
     }
