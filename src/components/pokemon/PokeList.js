@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
 import PokeCard from './PokeCard'
-import PokeInfo from './PokeInfo'
-
 import {
     Row,
     Alert,
-    Modal,
-    ModalHeader,
-    ModalBody
+    Button
 } from 'shards-react'
 
 import "../../tipos.css";
@@ -19,29 +15,19 @@ export default class PokeList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // pokeUrl : 'https://pokeapi.co/api/v2/pokemon/',
             pokeUrl : "https://pokeapi.co/api/v2/pokemon/?limit=25",
-            pokemons : [
-                // {name: 'bulbasur'},
-                // {name: 'duki'},
-                // {name: 'kea'},
-            ],
-            modalOpen: false
+            pokemons : [],
+            nextUrl: null,
+            modalOpen: false,
+            alertVisible: false
         }
         this.toggle = this.toggle.bind(this)
         this.alertCerrar = this.alertCerrar.bind(this)
+        this.getPokemons = this.getPokemons.bind(this)
     }
     
     async componentDidMount () {
-        try {
-            const res = await Axios.get(this.state.pokeUrl)
-            this.setState({pokemons: res.data['results']})            
-        } catch (error) {
-            this.setState({
-                alertTexto: 'Error al obtener lista de Pokemons',
-                visible: true
-            })
-        }
+        this.getPokemons()
     }
 
     toggle() {
@@ -51,24 +37,34 @@ export default class PokeList extends Component {
     }
 
     alertCerrar() {
-        this.setState({visible:false})
+        this.setState({alertVisible:false})
+    }
+
+    async getPokemons() {
+        try {
+            let url = this.state.nextUrl
+            if (this.state.nextUrl === null) {
+                url = this.state.pokeUrl
+            }
+            const res = await Axios.get(url)
+            this.setState({
+                pokemons: this.state.pokemons.concat(res.data.results),
+                nextUrl: res.data.next
+            })
+        } catch (error) {
+            this.setState({
+                alertTexto: 'Error al obtener lista de Pokemons',
+                alertVisible: true
+            })
+        }
     }
 
     render() {
-        const { modalOpen } = this.state
         return (
             <div>
-                <Alert theme='warning' open={this.state.visible} dismissible={this.alertCerrar}>
+                <Alert theme='warning' open={this.state.alertVisible} dismissible={this.alertCerrar}>
                     {this.state.alertTexto}
                 </Alert>
-                <Modal open={modalOpen} toggle={this.toggle} >
-                    <ModalHeader>
-                        Hola <span role='img'>🤟</span>
-                    </ModalHeader>
-                    <ModalBody>
-                        Skere
-                    </ModalBody>
-                </Modal>
                 <Row className='m-2'>
                     {
                         this.state.pokemons.map(pokemon => (
@@ -80,6 +76,11 @@ export default class PokeList extends Component {
                         ))
                     }
                 </Row>
+                <div className='m-1'>
+                    <Button outline block onClick={this.getPokemons} >
+                        Mas
+                    </Button>
+                </div>
             </div>
         )
     }
