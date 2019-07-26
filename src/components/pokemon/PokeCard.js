@@ -6,13 +6,24 @@ import {
     CardTitle,
     CardImg,
     Badge,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    Progress
 } from 'shards-react'
 
 export default class PokeCard extends Component {
-    state = {
-        foto: 'default.png',
-        id: '???',
-        tipos: []
+    constructor (props) {
+        super(props)
+        this.state = {
+            foto: 'default.png',
+            id: '???',
+            tipos: [],
+            stats: [],
+            pokeDescripcion: props.nombre,
+            modalOpen: false,
+        }
+        this.toggle = this.toggle.bind(this)
     }
 
     async componentDidMount () {
@@ -21,20 +32,36 @@ export default class PokeCard extends Component {
             this.setState({
                 foto: res.data.sprites.front_default,
                 tipos: res.data.types,
-                id: res.data.id
+                id: res.data.id,
+                stats: res.data.stats.reverse(),
+                pokemon: res.data
             })
+            try {
+                const pokeDescripciones = await Axios.get(res.data.species.url)
+                const pokeDescripcion = pokeDescripciones.data.flavor_text_entries.find(function(descripcion) {
+                    return descripcion.language.name === 'es';
+                });
+                this.setState({
+                    pokeDescripcion: pokeDescripcion.flavor_text
+                })
+            } catch (error) {
+            //    console.log(error);
+            }
         } catch (error) {
-           console.log(error);
+        //    console.log(error);
         }
     }
 
-    mostrarModal() {
-        console.log('mostrate');
+    toggle() {
+        this.setState({
+            modalOpen: !this.state.modalOpen
+        })
     }
 
     render() {
+        const { modalOpen } = this.state
         return (
-            <div className="col-3 mt-2 poke-card">
+            <div className="col-3 mt-2 poke-card" onClick={this.toggle}>
                 <Card className="poke-card" style={{background: this.colorFondo(this.state.tipos)}}>
                     <Badge pill theme='secondary' className='poke-pill m-2'>
                         {this.state.id}
@@ -46,6 +73,37 @@ export default class PokeCard extends Component {
                         </CardTitle>
                     </CardBody>
                 </Card>
+
+                <Modal size='lg' open={modalOpen} toggle={this.toggle} >
+                    <ModalHeader>
+                        {this.props.nombre}
+                    </ModalHeader>
+                    <ModalBody className='row'>
+                        <div className='col'>
+                            <div className='text-center'>
+                                <img src={this.state.foto} >
+                                </img>
+                            </div>
+                            <p>
+                                {this.state.pokeDescripcion}
+                            </p>
+                        </div>
+                        <div className="col-8">
+                            {
+                                this.state.stats.map(stat => {
+                                    return <div className='row'>
+                                        <div className='col-3'>
+                                            {stat.stat.name}
+                                        </div>
+                                        <div className='col'>
+                                            <Progress value={stat.base_stat}>{stat.base_stat}</Progress>
+                                        </div>
+                                    </div>
+                                })
+                            }
+                        </div>
+                    </ModalBody>
+                </Modal>
             </div>
         )
     }
