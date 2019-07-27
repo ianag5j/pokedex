@@ -61,7 +61,7 @@ export default class PokeCard extends Component {
     render() {
         const { modalOpen } = this.state
         return (
-            <div className="col-3 mt-2 poke-card" onClick={this.toggle}>
+            <div className="col-sm-3 col-md-4 col-lg-3 mt-2 poke-card" onClick={this.toggle}>
                 <Card className="poke-card" style={{background: this.colorFondo(this.state.tipos)}}>
                     <Badge pill theme='secondary' className='poke-pill m-2'>
                         {this.state.id}
