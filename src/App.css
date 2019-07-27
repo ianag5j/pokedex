@@ -18,4 +18,5 @@
 
 .poke-card {
   position: relative;
+  cursor: pointer;
 }
