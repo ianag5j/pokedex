@@ -89,7 +89,7 @@ export default class PokeCard extends Component {
                     <ModalBody className='row'>
                         <div className='col'>
                             <div className='text-center'>
-                                <img src={this.state.foto} >
+                                <img src={this.state.foto} alt={this.props.nombre} >
                                 </img>
                             </div>
                             <p>
