@@ -11,6 +11,7 @@ import {
     ModalBody,
     Progress
 } from 'shards-react'
+import Tipo from './Tipo'
 
 export default class PokeCard extends Component {
     constructor (props) {
@@ -74,7 +75,14 @@ export default class PokeCard extends Component {
                     </CardBody>
                 </Card>
 
-                <Modal size='lg' open={modalOpen} toggle={this.toggle} >
+                <Modal size='lg' open={modalOpen} toggle={this.toggle} className='poke-modal'>
+                    <div className='row badges-tipos'>
+                        {
+                            this.state.tipos.map((tipo) => {
+                                return <Tipo types={tipo} />
+                            })
+                        }
+                    </div>
                     <ModalHeader>
                         {this.props.nombre}
                     </ModalHeader>
@@ -108,8 +116,34 @@ export default class PokeCard extends Component {
         )
     }
 
+    getColorTipo(tipo) {
+        switch (tipo) {
+            case 'normal':
+                return '#b7aaa7'
+            case 'poison':
+                return '#8b4f7d'
+            case 'grass':
+                return '#7fbf67'
+            case 'fire':
+                return '#dd563f'
+            case 'water':
+                return '#3898f5'
+            case 'electric':
+                return '#ffdb71'
+            case 'bug':
+                return '#aabb2a'
+            case 'flying':
+                return '#6d9ae2' 
+            default:
+                return 'red'
+        }
+    }
+
     colorFondo(tipos) {
        if (tipos.length > 0) {
+            // if (tipos.length === 1) {
+            //     return this.getColorTipo(tipos[1].type.name)
+            // }
             let colorFondo = ''
             if (tipos.length > 1) {
                 colorFondo = 'linear-gradient(360deg, '
@@ -121,16 +155,16 @@ export default class PokeCard extends Component {
                         colorFondo += '#b7aaa7'
                         break;
                     case 'poison':
-                        colorFondo += '#8b4f7d'
+                        colorFondo += '#b97fc9'
                     break;
                     case 'grass':
-                        colorFondo += '#7fbf67'
+                        colorFondo += '#9bcc50'
                     break;
                     case 'fire':
-                        colorFondo += '#dd563f'
+                        colorFondo += '#fd7d24'
                     break;
                     case 'water':
-                        colorFondo += '#3898f5'
+                        colorFondo += '#4592c4'
                     break;
                     case 'electric':
                         colorFondo += '#ffdb71'
@@ -141,7 +175,40 @@ export default class PokeCard extends Component {
                     case 'flying':
                         colorFondo += '#6d9ae2'
                     break;
-                       
+                    case 'psychic':
+                        colorFondo += '#f366b9'
+                        break;
+                    case 'ice':
+                        colorFondo += '#51c4e7'
+                        break;
+                    case 'dragon':
+                        colorFondo += '#ab82ff'
+                        break;
+                    case 'dark':
+                        colorFondo += '#707070'
+                        break;
+                    case 'fairy':
+                        colorFondo += '#fdb9e9'
+                        break;
+                    case 'shadow':
+                        colorFondo += 'red'
+                        break;
+                    case 'fighting':
+                        colorFondo += '#d56723'
+                        break;
+                    case 'ground':
+                        colorFondo += '#ab9842'
+                        break;
+                    case 'rock':
+                        colorFondo += '#a38c21'
+                        break;
+                    case 'steel':
+                        colorFondo += '#9eb7b8'
+                        break;
+                    case 'ghost':
+                        colorFondo += '#7b62a3'
+                        break;
+                        
                     default:
                         break;
                 }

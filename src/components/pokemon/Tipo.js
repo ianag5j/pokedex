@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
+import {
+    Badge,
+} from 'shards-react'
 
 export default class Tipo extends Component {
-    state = {
-        color: null
-    }
-    async componentDidMount () {
-    }
-
     render() {
         return (
-           <div className={'col text-center tipo-' +  this.props.types.type.name}>
-               {
-                   this.props.types.type.name
-               }
+           <div className='text-center m-1'>
+                <Badge className={'tipo-' +  this.props.types.type.name}>
+                    { this.props.types.type.name }
+                </Badge>
            </div>
         )
     }

@@ -83,7 +83,7 @@ export default class PokeList extends Component {
                     }
                 </Row>
                 <div className='m-1'>
-                    <Button outline block onClick={this.getPokemons} disabled={this.state.BotonDisable}>
+                    <Button theme='danger' outline block onClick={this.getPokemons} disabled={this.state.BotonDisable}>
                         Mas
                     </Button>
                 </div>

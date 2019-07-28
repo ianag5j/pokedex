@@ -1,31 +1,81 @@
+.badges-tipos{
+  position: absolute;
+  top: 0px;
+  right: 15px;
+}
 .tipo-normal {
-    background-color: rgb(200, 200, 200)
-  }
-  
-  .tipo-poison {
-    background-color: rgb(155, 64, 207)
-  }
-  
-  .tipo-grass {
-    background-color: rgb(64, 223, 98)
-  }
-  
-  .tipo-fire {
-    background-color: rgb(240, 95, 27)
-  }
-  
-  .tipo-water {
-    background-color: rgb(53, 125, 241)
-  }
-  
-  .tipo-electric {
-    background-color: rgb(228, 241, 53)
-  }
-  
-  .tipo-bug {
-    background-color: rgb(127, 243, 92)
-  }
-  
-  .tipo-flying {
-    background-color: rgb(92, 200, 243)
-  }
+  background-color: #b7aaa7
+}
+
+.tipo-poison {
+  background-color: #b97fc9
+}
+
+.tipo-grass {
+  background-color: #9bcc50
+}
+
+.tipo-fire {
+  background-color: #fd7d24
+}
+
+.tipo-water {
+  background-color: #4592c4
+}
+
+.tipo-electric {
+  background-color: #ffdb71
+}
+
+.tipo-bug {
+  background-color: #aabb2a
+}
+
+.tipo-flying {
+  background-color: #6d9ae2
+}
+
+.tipo-psychic {
+  background-color: #f366b9
+}
+
+.tipo-ice {
+  background-color: #51c4e7
+}
+
+.tipo-dragon {
+  background-color: #ab82ff
+}
+
+.tipo-dark {
+  background-color: #707070
+}
+
+.tipo-fairy {
+  background-color: #fdb9e9
+}
+
+.tipo-shadow {
+
+  background-color: red
+}
+
+.tipo-fighting {
+  background-color: #d56723
+}
+
+.tipo-ground {
+  background-color: #ab9842
+}
+
+.tipo-rock {
+  background-color: #a38c21
+}
+
+.tipo-steel {
+  background-color: #9eb7b8
+}
+
+.tipo-ghost {
+  background-color: #7b62a3
+}
