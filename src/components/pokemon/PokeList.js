@@ -19,7 +19,8 @@ export default class PokeList extends Component {
             pokemons : [],
             nextUrl: null,
             modalOpen: false,
-            alertVisible: false
+            alertVisible: false,
+            BotonDisable: false
         }
         this.toggle = this.toggle.bind(this)
         this.alertCerrar = this.alertCerrar.bind(this)
@@ -42,6 +43,9 @@ export default class PokeList extends Component {
 
     async getPokemons() {
         try {
+            this.setState({
+                BotonDisable: true,
+            })
             let url = this.state.nextUrl
             if (this.state.nextUrl === null) {
                 url = this.state.pokeUrl
@@ -49,12 +53,14 @@ export default class PokeList extends Component {
             const res = await Axios.get(url)
             this.setState({
                 pokemons: this.state.pokemons.concat(res.data.results),
-                nextUrl: res.data.next
+                nextUrl: res.data.next,
+                BotonDisable: false,
             })
         } catch (error) {
             this.setState({
                 alertTexto: 'Error al obtener lista de Pokemons',
-                alertVisible: true
+                alertVisible: true,
+                BotonDisable: false,
             })
         }
     }
@@ -77,7 +83,7 @@ export default class PokeList extends Component {
                     }
                 </Row>
                 <div className='m-1'>
-                    <Button outline block onClick={this.getPokemons} >
+                    <Button outline block onClick={this.getPokemons} disabled={this.state.BotonDisable}>
                         Mas
                     </Button>
                 </div>
