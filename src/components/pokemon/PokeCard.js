@@ -121,107 +121,60 @@ export default class PokeCard extends Component {
             case 'normal':
                 return '#b7aaa7'
             case 'poison':
-                return '#8b4f7d'
+                return '#b97fc9'
             case 'grass':
-                return '#7fbf67'
+                return '#9bcc50'
             case 'fire':
-                return '#dd563f'
+                return '#fd7d24'
             case 'water':
-                return '#3898f5'
+                return '#4592c4'
             case 'electric':
                 return '#ffdb71'
             case 'bug':
                 return '#aabb2a'
             case 'flying':
-                return '#6d9ae2' 
-            default:
+                return '#6d9ae2'
+            case 'psychic':
+                return '#f366b9'
+            case 'ice':
+                return '#51c4e7'
+            case 'dragon':
+                return '#ab82ff'
+            case 'dark':
+                return '#707070'
+            case 'fairy':
+                return '#fdb9e9'
+            case 'shadow':
                 return 'red'
+            case 'fighting':
+                return '#d56723'
+            case 'ground':
+                return '#ab9842'
+            case 'rock':
+                return '#a38c21'
+            case 'steel':
+                return '#9eb7b8'
+            case 'ghost':
+                return '#7b62a3'
+            default:
+                return 'white'
         }
     }
 
     colorFondo(tipos) {
        if (tipos.length > 0) {
-            // if (tipos.length === 1) {
-            //     return this.getColorTipo(tipos[1].type.name)
-            // }
-            let colorFondo = ''
-            if (tipos.length > 1) {
-                colorFondo = 'linear-gradient(360deg, '
+            if (tipos.length === 1) {
+                return this.getColorTipo(tipos[0].type.name)
             }
-
+            let colorFondo = 'linear-gradient(360deg, '
             tipos.forEach((tipo, index) => {
-                switch (tipo.type.name) {
-                    case 'normal':
-                        colorFondo += '#b7aaa7'
-                        break;
-                    case 'poison':
-                        colorFondo += '#b97fc9'
-                    break;
-                    case 'grass':
-                        colorFondo += '#9bcc50'
-                    break;
-                    case 'fire':
-                        colorFondo += '#fd7d24'
-                    break;
-                    case 'water':
-                        colorFondo += '#4592c4'
-                    break;
-                    case 'electric':
-                        colorFondo += '#ffdb71'
-                    break;
-                    case 'bug':
-                        colorFondo += '#aabb2a'
-                    break;
-                    case 'flying':
-                        colorFondo += '#6d9ae2'
-                    break;
-                    case 'psychic':
-                        colorFondo += '#f366b9'
-                        break;
-                    case 'ice':
-                        colorFondo += '#51c4e7'
-                        break;
-                    case 'dragon':
-                        colorFondo += '#ab82ff'
-                        break;
-                    case 'dark':
-                        colorFondo += '#707070'
-                        break;
-                    case 'fairy':
-                        colorFondo += '#fdb9e9'
-                        break;
-                    case 'shadow':
-                        colorFondo += 'red'
-                        break;
-                    case 'fighting':
-                        colorFondo += '#d56723'
-                        break;
-                    case 'ground':
-                        colorFondo += '#ab9842'
-                        break;
-                    case 'rock':
-                        colorFondo += '#a38c21'
-                        break;
-                    case 'steel':
-                        colorFondo += '#9eb7b8'
-                        break;
-                    case 'ghost':
-                        colorFondo += '#7b62a3'
-                        break;
-                        
-                    default:
-                        break;
-                }
-                
+                colorFondo += this.getColorTipo(tipo.type.name)
                 if (tipos[(index + 1)] !== undefined) {
                     colorFondo += ', '
                     
                 }
             });
-
-            if (tipos.length > 1) {
-                colorFondo += ')'
-            }
+            colorFondo += ')'
             
             return colorFondo
        }
