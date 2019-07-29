@@ -23,6 +23,7 @@ export default class NavBar extends Component {
       resultadoPokemons: []
     };
     this.buscarPokemon = this.buscarPokemon.bind(this);
+    this.verPokemon = this.verPokemon.bind(this);
   }
 
   async componentDidMount() {
@@ -50,12 +51,19 @@ export default class NavBar extends Component {
     }
   }
 
+  verPokemon(event) {
+    window.location = "/pokemon/" + event.target.innerHTML;
+    this.setState({
+      resultadoPokemons: []
+    });
+  }
+
   render() {
     return (
       <div>
         <Navbar type="dark" theme="danger" expand="md">
           <NavbarBrand href="/">
-            <img src="Pokédex_logo.png" height="30" alt="Pokedex" />
+            <img src="/Pokédex_logo.png" height="30" alt="Pokedex" />
           </NavbarBrand>
           <Nav navbar className="ml-auto">
             <InputGroup size="sm" seamless>
@@ -70,12 +78,15 @@ export default class NavBar extends Component {
                 placeholder="Buscar Pokemon"
                 onChange={this.buscarPokemon}
               />
-              <ListGroup small={true} id="resultados-busqueda">
+              <ListGroup id="resultados-busqueda">
                 {this.state.resultadoPokemons.map(pokemon => {
-                  return <ListGroupItem>{pokemon.name}</ListGroupItem>;
+                  return (
+                    <ListGroupItem onClick={this.verPokemon}>
+                      {pokemon.name}
+                    </ListGroupItem>
+                  );
                 })}
               </ListGroup>
-              <div />
             </InputGroup>
           </Nav>
         </Navbar>

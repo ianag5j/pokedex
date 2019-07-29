@@ -4,78 +4,73 @@
   right: 15px;
 }
 .tipo-normal {
-  background-color: #b7aaa7
+  background-color: #b7aaa7 !important 
 }
 
 .tipo-poison {
-  background-color: #b97fc9
+  background-color: #b97fc9 !important
 }
 
 .tipo-grass {
-  background-color: #9bcc50
+  background-color: #9bcc50 !important
 }
 
 .tipo-fire {
-  background-color: #fd7d24
+  background-color: #fd7d24 !important
 }
 
 .tipo-water {
-  background-color: #4592c4
+  background-color: #4592c4 !important
 }
 
 .tipo-electric {
-  background-color: #ffdb71
+  background-color: #ffdb71 !important
 }
 
 .tipo-bug {
-  background-color: #aabb2a
+  background-color: #aabb2a !important
 }
 
 .tipo-flying {
-  background-color: #6d9ae2
+  background-color: #6d9ae2 !important
 }
 
 .tipo-psychic {
-  background-color: #f366b9
+  background-color: #f366b9 !important
 }
 
 .tipo-ice {
-  background-color: #51c4e7
+  background-color: #51c4e7 !important
 }
 
 .tipo-dragon {
-  background-color: #ab82ff
+  background-color: #ab82ff !important
 }
 
 .tipo-dark {
-  background-color: #707070
+  background-color: #707070 !important
 }
 
 .tipo-fairy {
-  background-color: #fdb9e9
-}
-
-.tipo-shadow {
-
-  background-color: red
+  background-color: #fdb9e9 !important
 }
 
 .tipo-fighting {
-  background-color: #d56723
+  background-color: #d56723 !important
 }
 
 .tipo-ground {
-  background-color: #ab9842
+  background-color: #ab9842 !important
 }
 
 .tipo-rock {
-  background-color: #a38c21
+  background-color: #a38c21 !important
 }
 
 .tipo-steel {
-  background-color: #9eb7b8
+  background-color: #9eb7b8 !important
 }
 
 .tipo-ghost {
-  background-color: #7b62a3
+  background-color: #7b62a3 !important
 }
