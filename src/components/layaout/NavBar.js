@@ -40,6 +40,7 @@ export default class NavBar extends Component {
    */
   buscarPokemon(event) {
     let busqueda = event.target.value;
+    busqueda = busqueda.toLowerCase()
     if (busqueda !== "") {
       let resultados = this.state.listaAllsPokemons.filter(pokemon =>
         pokemon.name.includes(busqueda)
@@ -48,7 +49,6 @@ export default class NavBar extends Component {
       this.setState({
         resultadoPokemons: resultados
       });
-      console.log(resultados);
     } else {
       this.setState({
         resultadoPokemons: []
