@@ -37,24 +37,38 @@ export default class PokeCard extends Component {
         stats: res.data.stats.reverse(),
         pokemon: res.data
       });
-      try {
-        const pokeDescripciones = await Axios.get(res.data.species.url);
-        const pokeDescripcion = pokeDescripciones.data.flavor_text_entries.find(
-          function(descripcion) {
-            return descripcion.language.name === "es";
-          }
-        );
-        this.setState({
-          pokeDescripcion: pokeDescripcion.flavor_text
-        });
-      } catch (error) {
-        //    console.log(error);
-      }
+      this.getDescripcion(res.data.species.url);
     } catch (error) {
-      //    console.log(error);
+      console.error(error);
     }
   }
 
+  /**
+   * Obtiene la descripcion en español del pokemon
+   * @param String speciesUrl
+   * @memberof PokeCard
+   */
+  async getDescripcion(speciesUrl) {
+    try {
+      const pokeDescripciones = await Axios.get(speciesUrl);
+      const pokeDescripcion = pokeDescripciones.data.flavor_text_entries.find(
+        function(descripcion) {
+          return descripcion.language.name === "es";
+        }
+      );
+      this.setState({
+        pokeDescripcion: pokeDescripcion.flavor_text
+      });
+    } catch (error) {
+      console.error("Error al obtener descripcion del pokemon");
+      console.log(error);
+    }
+  }
+
+  /**
+   * Cierra o Abre el modal
+   * @memberof PokeCard
+   */
   toggle() {
     this.setState({
       modalOpen: !this.state.modalOpen

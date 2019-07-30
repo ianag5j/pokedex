@@ -33,6 +33,11 @@ export default class NavBar extends Component {
     });
   }
 
+  /**
+   * Filtra los nombres por la busqueda y devuelve los primeros 5
+   * @param {*} event
+   * @memberof NavBar
+   */
   buscarPokemon(event) {
     let busqueda = event.target.value;
     if (busqueda !== "") {
@@ -63,7 +68,7 @@ export default class NavBar extends Component {
       <div>
         <Navbar type="dark" theme="danger" expand="md">
           <NavbarBrand href="/">
-            <img src="/Pokédex_logo.png" height="30" alt="Pokedex" />
+            <img src="Pokédex_logo.png" height="30" alt="Pokedex" />
           </NavbarBrand>
           <Nav navbar className="ml-auto">
             <InputGroup size="sm" seamless>
