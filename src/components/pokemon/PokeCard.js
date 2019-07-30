@@ -8,8 +8,7 @@ import {
   Badge,
   Modal,
   ModalHeader,
-  ModalBody,
-  Progress
+  ModalBody
 } from "shards-react";
 import Tipo from "./Tipo";
 
@@ -93,7 +92,7 @@ export default class PokeCard extends Component {
         </Card>
 
         <Modal
-          size="lg"
+          size="sm"
           open={modalOpen}
           toggle={this.toggle}
           className="poke-modal"
@@ -110,20 +109,6 @@ export default class PokeCard extends Component {
                 <img src={this.state.foto} alt={this.props.nombre} />
               </div>
               <p>{this.state.pokeDescripcion}</p>
-            </div>
-            <div className="col-8">
-              {this.state.stats.map(stat => {
-                return (
-                  <div className="row">
-                    <div className="col-3">{stat.stat.name}</div>
-                    <div className="col">
-                      <Progress value={stat.base_stat}>
-                        {stat.base_stat}
-                      </Progress>
-                    </div>
-                  </div>
-                );
-              })}
             </div>
           </ModalBody>
         </Modal>
