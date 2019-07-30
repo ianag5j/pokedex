@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
 import NavBar from "./components/layaout/NavBar";
@@ -18,9 +18,11 @@ function App() {
       </header>
       <BrowserRouter>
         <React.Fragment>
-          <Route path='//' component={PokeList} ></Route>
-          <Route path='/pokemon' component={PokeInfo} ></Route>
-        </React.Fragment>
+          <Switch>
+            <Route path='/pokemon' component={PokeInfo} ></Route>
+            <Route path='/' component={PokeList} ></Route>
+          </Switch>
+        </React.Fragment> 
       </BrowserRouter>
     </div>
   );
