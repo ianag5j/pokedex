@@ -66,11 +66,11 @@ export default class NavBar extends Component {
   render() {
     return (
       <div>
-        <Navbar type="dark" theme="danger" expand="md">
-          <NavbarBrand href="/">
+        <Navbar type="dark" theme="danger" expand="md" className="row">
+          <NavbarBrand href="/" className='col-4'>
             <img src="/Pokédex_logo.png" height="30" alt="Pokedex" />
           </NavbarBrand>
-          <Nav navbar className="ml-auto">
+          <Nav navbar className="ml-auto col col-md-4">
             <InputGroup size="sm" seamless>
               <InputGroupAddon type="prepend">
                 <InputGroupText>
