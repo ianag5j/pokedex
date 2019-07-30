@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   Nav,
@@ -23,7 +24,6 @@ export default class NavBar extends Component {
       resultadoPokemons: []
     };
     this.buscarPokemon = this.buscarPokemon.bind(this);
-    this.verPokemon = this.verPokemon.bind(this);
   }
 
   async componentDidMount() {
@@ -40,7 +40,7 @@ export default class NavBar extends Component {
    */
   buscarPokemon(event) {
     let busqueda = event.target.value;
-    busqueda = busqueda.toLowerCase()
+    busqueda = busqueda.toLowerCase();
     if (busqueda !== "") {
       let resultados = this.state.listaAllsPokemons.filter(pokemon =>
         pokemon.name.includes(busqueda)
@@ -56,18 +56,11 @@ export default class NavBar extends Component {
     }
   }
 
-  verPokemon(event) {
-    window.location = "/pokemon/" + event.target.innerHTML;
-    this.setState({
-      resultadoPokemons: []
-    });
-  }
-
   render() {
     return (
       <div>
         <Navbar type="dark" theme="danger" expand="md" className="row">
-          <NavbarBrand href="/" className='col-4'>
+          <NavbarBrand href="/" className="col-4">
             <img src="/Pokédex_logo.png" height="30" alt="Pokedex" />
           </NavbarBrand>
           <Nav navbar className="ml-auto col col-md-4">
@@ -86,8 +79,10 @@ export default class NavBar extends Component {
               <ListGroup id="resultados-busqueda">
                 {this.state.resultadoPokemons.map(pokemon => {
                   return (
-                    <ListGroupItem onClick={this.verPokemon}>
-                      {pokemon.name}
+                    <ListGroupItem>
+                      <Link to={"/pokemon/" + pokemon.name}>
+                        {pokemon.name}
+                      </Link>
                     </ListGroupItem>
                   );
                 })}

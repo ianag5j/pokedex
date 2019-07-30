@@ -13,10 +13,10 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <header>
-        <NavBar />
-      </header>
       <BrowserRouter>
+        <header>
+          <NavBar />
+        </header>
         <React.Fragment>
           <Switch>
             <Route path='/pokemon' component={PokeInfo} ></Route>
