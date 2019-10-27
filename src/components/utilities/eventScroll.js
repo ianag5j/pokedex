@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 export default class eventScroll extends Component {
     constructor(props) {
@@ -30,11 +31,16 @@ export default class eventScroll extends Component {
     }
 
     render() {
-        const { children } = this.props;
+        const { runingFunction } = this.state;
         return (
-            <>
-                {children}
-            </>
+          <>
+            <ClipLoader
+              sizeUnit={"px"}
+              size={50}
+              color={'#c4183c'}
+              loading={runingFunction}
+            />
+          </>
         )
     }
 }

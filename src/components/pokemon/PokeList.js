@@ -78,19 +78,8 @@ export default class PokeList extends Component {
             />
           ))}
         </Row>
-        <div className="m-1">
-          <EventScroll fun={this.getPokemons}>
-            {/* <Button
-              id="btnLoad"
-              theme="danger"
-              outline
-              block
-              onClick={this.getPokemons}
-              disabled={this.state.BotonDisable}
-            >
-              Mas
-            </Button> */}
-          </EventScroll>
+        <div className="m-2 col text-center">
+          <EventScroll fun={this.getPokemons} />
         </div>
       </div>
     );
