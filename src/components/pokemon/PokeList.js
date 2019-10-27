@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import PokeCard from "./PokeCard";
 import { Row, Alert, Button } from "shards-react";
-
+import EventScroll from '../utilities/eventScroll';
 import "../../tipos.css";
 
 export default class PokeList extends Component {
@@ -79,15 +79,18 @@ export default class PokeList extends Component {
           ))}
         </Row>
         <div className="m-1">
-          <Button
-            theme="danger"
-            outline
-            block
-            onClick={this.getPokemons}
-            disabled={this.state.BotonDisable}
-          >
-            Mas
-          </Button>
+          <EventScroll fun={this.getPokemons}>
+            {/* <Button
+              id="btnLoad"
+              theme="danger"
+              outline
+              block
+              onClick={this.getPokemons}
+              disabled={this.state.BotonDisable}
+            >
+              Mas
+            </Button> */}
+          </EventScroll>
         </div>
       </div>
     );
