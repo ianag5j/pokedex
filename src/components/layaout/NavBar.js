@@ -66,7 +66,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <div>
-        <Navbar type="dark" theme="danger" expand="md" className="row">
+        <Navbar type="dark" theme="danger" expand="md" className="row m-0">
           <NavbarBrand href="/" className='col-4'>
             <img src="/Pokédex_logo.png" height="30" alt="Pokedex" />
           </NavbarBrand>
