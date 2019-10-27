@@ -11,10 +11,16 @@ export default class eventScroll extends Component {
 
     handleScroll = async () => {
         const { runingFunction } = this.state;
+        console.log( window.innerHeight + document.documentElement.scrollTop);
+        console.log(document.documentElement.offsetHeight);
+        console.log('///////////');
+        
         if (
-          window.innerHeight + document.documentElement.scrollTop
+          (window.innerHeight + document.documentElement.scrollTop + 10)
           >= document.documentElement.offsetHeight && !runingFunction
         ) {
+          console.log('1111111');
+          
           this.setState({
             runingFunction: true,
           });
@@ -23,6 +29,8 @@ export default class eventScroll extends Component {
           this.setState({
             runingFunction: false,
           });
+          console.log('222222');
+
         }
     }
 
